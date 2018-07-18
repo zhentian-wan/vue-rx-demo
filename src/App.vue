@@ -1,6 +1,6 @@
 <template>
   <section class="section">
-    <button class="button" :disabled="disabled$" v-stream:click="click$">{{buttonText$}}</button>
+    <button class="button" :disabled="disabled$" v-stream:click="{subject: click$, data: 1}">{{buttonText$}}</button>
     <h2>
       {{name$}}
     </h2>
@@ -29,7 +29,8 @@ export default {
     const createLoader = url => from(this.$http.get(url)).pipe(pluck('data'));
 
     const luke$ = this.click$.pipe(
-      mapTo('https://starwars.egghead.training/people/1'),
+      pluck('data'),
+      map(id => `https://starwars.egghead.training/people/${id}`),
       exhaustMap(createLoader),
       catchError(() => of({name: 'Failed.. :('})),
       share()

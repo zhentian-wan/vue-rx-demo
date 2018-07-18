@@ -18,9 +18,7 @@ import {
   catchError,
   shareReplay,
   share,
-  startWith,
-  concat,
-withLatestFrom
+  startWith
 } from 'rxjs/operators';
 
 export default {
@@ -30,7 +28,7 @@ export default {
     const createLoader = url => from(this.$http.get(url)).pipe(pluck('data'));
 
     const luke$ = this.click$.pipe(
-      mapTo('https://starwars.egghead.trainin/people/1'),
+      mapTo('https://starwars.egghead.training/people/1'),
       switchMap(createLoader),
       catchError(() => of({name: 'Failed.. :('})),
       share()
@@ -43,16 +41,16 @@ export default {
       map(src => `https://starwars.egghead.training/${src}`)
     );
 
-    const failImage$ = this.imageError$.pipe(mapTo(
-      `http://via.placeholder.com/400x400`
-    ));
+    const failImage$ = this.imageError$.pipe(
+      mapTo(`http://via.placeholder.com/400x400`)
+    );
 
     const image$ = merge(
       loadImage$,
       failImage$
     )
 
-    const disabled$ = withLatestFrom(
+    const disabled$ = merge(
       this.click$.pipe(mapTo(true)),
       luke$.pipe(mapTo(false)),
     ).pipe(startWith(false));

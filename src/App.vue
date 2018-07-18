@@ -11,6 +11,7 @@
 <script>
 import { from, of, merge, throwError } from 'rxjs';
 import {
+  exhaustMap,
   switchMap,
   pluck,
   map,
@@ -29,7 +30,7 @@ export default {
 
     const luke$ = this.click$.pipe(
       mapTo('https://starwars.egghead.training/people/1'),
-      switchMap(createLoader),
+      exhaustMap(createLoader),
       catchError(() => of({name: 'Failed.. :('})),
       share()
     );

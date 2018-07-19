@@ -19,6 +19,7 @@
 import { from, of, merge, combineLatest } from 'rxjs';
 import {
   exhaustMap,
+  switchMap,
   pluck,
   map,
   mapTo,
@@ -36,6 +37,13 @@ export default {
   },
   domStreams: ['click$', 'imageError$'],
   subscriptions() {
+
+    let cache = {};
+    const cachePerson = cache => url =>
+      cache[url] ?
+      cache[url]:
+      cache[url] = createLoader(url);
+
     const activeTab$ = this.$watchAsObservable('activeTab', {
       immediate: true
     }).pipe(pluck('newValue'));
@@ -52,7 +60,7 @@ export default {
       (people$, (tabId, people) => people[tabId].id))
     .pipe(
       map(id => `https://starwars.egghead.training/people/${id}`),
-      exhaustMap(createLoader),
+      switchMap(cachePerson(cache)),
       catchError(() => of({ name: 'Failed.. :(' })),
       share()
     );

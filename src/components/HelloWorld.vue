@@ -1,16 +1,22 @@
 <template>
-  <Layout>
-  </Layout>
+  <Settings >
+    <Layout slot-scope="props">
+        <header slot='header'>{{props.header}}</header>
+        <footer slot='footer'>{{props.footer}}</footer>
+    </Layout>
+  </Settings>
 </template>
 
 <script>
 
 import {Component, Prop, Vue} from 'vue-property-decorator'
 import Layout from './Layout';
+import Settings from './Settings';
 
 @Component({
   components: {
-    Layout
+    Layout,
+    Settings
   }
 })
 export default class HelloWorld extends Vue {

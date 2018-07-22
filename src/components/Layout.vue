@@ -9,7 +9,5 @@
     <slot name="footer">
       <h2 class="text-orange">Please add a footer!</h2>
     </slot>
-
     </div>
-
 </template>

@@ -1,4 +1,5 @@
 import 'buefy/lib/buefy.css'
+import "tailwindcss/dist/tailwind.css"
 
 import Vue from 'vue'
 import App from './App.vue'
@@ -21,9 +22,6 @@ Vue.config.productionTip = false
 
 new Vue({
   render: (h) => (
-    <App>
-    <h1 slot="header">This is header</h1>  
-    <h2 slot="footer">This is footer</h2>  
-  </App>
+    <App />
   )
 }).$mount('#app')

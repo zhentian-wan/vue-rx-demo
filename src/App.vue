@@ -2,8 +2,7 @@
 
 
   <section class="section">
-      <slot name='header'></slot>
-      hwefew
+
   <hello-world message="Message from APP"></hello-world>
   {{activeTab$}}
   <b-tabs v-model="activeTab">
@@ -14,7 +13,6 @@
       {{name$}}
     </h2>
     <img v-stream:error="imageError$" :src="image$" alt="">
-     <slot name='footer'></slot>
   </section>
 </template>
 

@@ -1,14 +1,18 @@
 <template>
-  <div @click="onClick" class="hello">
-    {{message}}
-  </div>
+  <Layout>
+  </Layout>
 </template>
 
 <script>
 
 import {Component, Prop, Vue} from 'vue-property-decorator'
+import Layout from './Layout';
 
-@Component({})
+@Component({
+  components: {
+    Layout
+  }
+})
 export default class HelloWorld extends Vue {
   @Prop({
     default: 'Default message from Hello World Component'

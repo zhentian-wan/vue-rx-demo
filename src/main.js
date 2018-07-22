@@ -20,5 +20,10 @@ Vue.use(VueAxios, Axios)
 Vue.config.productionTip = false
 
 new Vue({
-  render: h => h(App)
+  render: (h) => (
+    <App>
+    <h1 slot="header">This is header</h1>  
+    <h2 slot="footer">This is footer</h2>  
+  </App>
+  )
 }).$mount('#app')

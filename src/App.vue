@@ -2,7 +2,7 @@
 
 
   <section class="section">
-
+  <hello-world message="Message from APP"></hello-world>
   {{activeTab$}}
   <b-tabs v-model="activeTab">
     <b-tab-item v-for="person of people$" :key="person.id" :label="person.name"></b-tab-item>
@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import HelloWorld from './components/HelloWorld';
 import { from, of, merge, combineLatest } from 'rxjs';
 import {
   exhaustMap,
@@ -30,6 +31,9 @@ import {
 
 export default {
   name: 'app',
+  components:{
+    HelloWorld
+  },
   data() {
     return {
       activeTab: 0

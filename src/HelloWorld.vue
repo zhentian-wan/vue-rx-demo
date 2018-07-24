@@ -1,8 +1,9 @@
 <template>
   <Settings >
-    <Layout slot-scope="props">
-        <header slot='header'>{{props.header}}</header>
-        <footer slot='footer'>{{props.footer}}</footer>
+    <Layout slot-scope="{header, footer}">
+        <Header :header="header"></Header>
+        <div slot="content" class="flex-grow p-3">Amazing content</div>
+        <Footer :footer="footer"></Footer> 
     </Layout>
   </Settings>
 </template>
@@ -13,10 +14,15 @@ import {Component, Prop, Vue} from 'vue-property-decorator'
 import Layout from './Layout';
 import Settings from './Settings';
 
+import {Header, Footer} from './components';
+
+
 @Component({
   components: {
     Layout,
-    Settings
+    Settings,
+    Header,
+    Footer
   }
 })
 export default class HelloWorld extends Vue {

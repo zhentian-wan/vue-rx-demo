@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import HelloWorld from './HelloWorld';
 import { from, of, merge, combineLatest } from 'rxjs';
 import {
   exhaustMap,

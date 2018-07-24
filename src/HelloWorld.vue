@@ -2,7 +2,10 @@
   <Settings >
     <Layout slot-scope="{header, footer}">
         <MyHeader slot="header" :header="header"></MyHeader>
-        <MyContent slot="content" :limit="4">
+        <section slot="content" class="flex flex-row flex-no-wrap">
+          <Robot :names="names" :num="2"></Robot>
+        </section>
+        <MyContent slot="content" :limit="4" class="flex flex-row flex-no-wrap">
             <div><img src="https://robohash.org/mindy?set=set4" alt=""></div>
             <div><img src="https://robohash.org/john?set=set4" alt=""></div>
             <div><img src="https://robohash.org/kim?set=set4" alt=""></div>
@@ -20,13 +23,14 @@ import {Component, Prop, Vue} from 'vue-property-decorator'
 import Layout from './Layout';
 import Settings from './Settings';
 
-import {Header, Footer, Content} from './components';
+import {Header, Footer, Content, Robot} from './components';
 
 
 @Component({
   components: {
     Layout,
     Settings,
+    Robot,
     MyHeader: Header,
     MyFooter: Footer,
     MyContent: Content
@@ -38,8 +42,8 @@ export default class HelloWorld extends Vue {
   })
   message
 
-  onClick() {
-    this.message = 'Goodbye'
-  }
+  @Prop({
+    default: ["mindy", "john", "kim", "joel", "ben"]
+  }) names
 }
 </script>

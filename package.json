@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "buefy": "^0.6.6",
+    "lodash": "^4.17.10",
     "rxjs": "^6.2.2",
     "tailwindcss": "^0.6.4",
     "vue": "^2.5.16",

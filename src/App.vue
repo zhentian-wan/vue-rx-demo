@@ -4,7 +4,8 @@
   <section class="section">
 
   <hello-world message="Message from APP"></hello-world>
-  {{activeTab$}}
+  <section style="margin-top: 60px">
+      {{activeTab$}}
   <b-tabs v-model="activeTab">
     <b-tab-item v-for="person of people$" :key="person.id" :label="person.name"></b-tab-item>
   </b-tabs>
@@ -13,6 +14,8 @@
       {{name$}}
     </h2>
     <img v-stream:error="imageError$" :src="image$" alt="">
+  </section>
+
   </section>
 </template>
 

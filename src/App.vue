@@ -2,7 +2,6 @@
 
 
   <section class="section">
-
   <hello-world message="Message from APP"></hello-world>
   <section style="margin-top: 60px">
       {{activeTab$}}
@@ -37,6 +36,13 @@ export default {
   name: 'app',
   components:{
     HelloWorld
+  },
+  filters: {
+    capitalize: function(value) {
+      if (!value) return "";
+      value = value.toString();
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    },
   },
   data() {
     return {

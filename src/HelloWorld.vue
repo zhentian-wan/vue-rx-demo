@@ -1,5 +1,7 @@
 <template>
-  <Settings >
+  <div>
+        <One></One>
+      <Settings >
     <Layout slot-scope="{header, footer}">
         <MyHeader slot="header" :header="header"></MyHeader>
         <section slot="content" class="flex flex-row flex-no-wrap">
@@ -15,6 +17,9 @@
         <MyFooter slot="footer" :footer="footer"></MyFooter> 
     </Layout>
   </Settings>
+
+
+  </div>
 </template>
 
 <script>
@@ -26,6 +31,18 @@ import Settings from './Settings';
 import {Header, Footer, Content, Robot} from './components';
 
 
+const One = {
+  functional: true,
+  name: "One",
+  render: (h) => <h1>Two</h1>
+}
+
+const Two = {
+  functional: true,
+  name: "Two",
+  render: (h) => <h1>Two</h1>
+}
+
 @Component({
   components: {
     Layout,
@@ -33,7 +50,8 @@ import {Header, Footer, Content, Robot} from './components';
     Robot,
     MyHeader: Header,
     MyFooter: Footer,
-    MyContent: Content
+    MyContent: Content,
+    One
   }
 })
 export default class HelloWorld extends Vue {
